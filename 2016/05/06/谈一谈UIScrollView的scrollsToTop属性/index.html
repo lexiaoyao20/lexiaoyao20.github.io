@@ -3,21 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Hello World | 苏波的个人博客</title>
+  <title>谈一谈UIScrollView的scrollsToTop属性 | 苏波的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+  <meta name="description" content="相信很多人都没有注意到iOS有这样一个隐藏的功能：当前页面有滚动视图（ UIScrollView 或者 UIScrollView 的子类，下面我都称作滚动视图），触摸状态栏，视图会自动滚动的最顶端，相当于一些网页的回到顶端的功能。下面给个图来展示下：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="http://yoursite.com/2016/05/06/hello-world/index.html">
+<meta property="og:title" content="谈一谈UIScrollView的scrollsToTop属性">
+<meta property="og:url" content="http://yoursite.com/2016/05/06/谈一谈UIScrollView的scrollsToTop属性/index.html">
 <meta property="og:site_name" content="苏波的个人博客">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
-<meta property="og:updated_time" content="2016-05-05T17:18:09.000Z">
+<meta property="og:description" content="相信很多人都没有注意到iOS有这样一个隐藏的功能：当前页面有滚动视图（ UIScrollView 或者 UIScrollView 的子类，下面我都称作滚动视图），触摸状态栏，视图会自动滚动的最顶端，相当于一些网页的回到顶端的功能。下面给个图来展示下：">
+<meta property="og:image" content="http://upload-images.jianshu.io/upload_images/452998-cb4e2f8a121c3cba.gif?imageMogr2/auto-orient/strip">
+<meta property="og:updated_time" content="2016-05-06T15:47:45.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello World">
-<meta name="twitter:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub.
-Quick">
+<meta name="twitter:title" content="谈一谈UIScrollView的scrollsToTop属性">
+<meta name="twitter:description" content="相信很多人都没有注意到iOS有这样一个隐藏的功能：当前页面有滚动视图（ UIScrollView 或者 UIScrollView 的子类，下面我都称作滚动视图），触摸状态栏，视图会自动滚动的最顶端，相当于一些网页的回到顶端的功能。下面给个图来展示下：">
+<meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/452998-cb4e2f8a121c3cba.gif?imageMogr2/auto-orient/strip">
   
     <link rel="alternative" href="/atom.xml" title="苏波的个人博客" type="application/atom+xml">
   
@@ -159,7 +158,7 @@ Quick">
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/UINavigationBar/">UINavigationBar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIScrollView/">UIScrollView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UISearchBar/">UISearchBar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrollsToTop属性/">scrollsToTop属性</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自定义/">自定义</a></li></ul>
                     </div>
                 </section>
                 
@@ -236,11 +235,11 @@ Quick">
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-谈一谈UIScrollView的scrollsToTop属性" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2016/05/06/hello-world/" class="article-date">
-      <time datetime="2016-05-05T17:18:09.000Z" itemprop="datePublished">2016-05-06</time>
+      <a href="/2016/05/06/谈一谈UIScrollView的scrollsToTop属性/" class="article-date">
+      <time datetime="2016-05-06T15:29:46.000Z" itemprop="datePublished">2016-05-06</time>
 </a>
     </div>
   
@@ -253,7 +252,7 @@ Quick">
         
   
     <h1 class="article-title" itemprop="name">
-      Hello World
+      谈一谈UIScrollView的scrollsToTop属性
     </h1>
   
 
@@ -263,6 +262,10 @@ Quick">
         
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/UIScrollView/">UIScrollView</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/scrollsToTop属性/">scrollsToTop属性</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -270,15 +273,23 @@ Quick">
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+        <p>相信很多人都没有注意到iOS有这样一个隐藏的功能：当前页面有滚动视图（ <code>UIScrollView</code> 或者 <code>UIScrollView</code> 的子类，下面我都称作滚动视图），触摸状态栏，视图会自动滚动的最顶端，相当于一些网页的回到顶端的功能。下面给个图来展示下：</p>
+<p><excerpt in="" index="" |="" 首页摘要=""> </excerpt></p>
+<ul>
+<li><a id="more"></a>
+<the rest="" of="" contents="" |="" 余下全文="">
+
+</the></li>
+</ul>
+<p><img src="http://upload-images.jianshu.io/upload_images/452998-cb4e2f8a121c3cba.gif?imageMogr2/auto-orient/strip" alt="图1：触摸状态栏回到顶部"></p>
+<p>#一. 遇到的问题<br>如果页面有多个滚动视图，如顶部一个广告轮播控件（假如是基于<code>UIScrollView</code>的轮播控件），下面是一个TableView，你会发现触摸状态栏没有反应了，回到顶部功能失效。</p>
+<p>#二. 解决问题<br>细细研究了一番返现，<code>UIScrollView</code>有个<a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIScrollView_Class/#//apple_ref/occ/instp/UIScrollView/scrollsToTop" target="_blank" rel="external">scrollsToTop</a>属性，这个属性就是控制滚动到顶部手势的开关。它的默认值是<code>YES</code>，所以不用我们设置，默认是支持滚动到顶部的。具体详细描述如下：</p>
+<blockquote>
+<p>The scroll-to-top gesture is a tap on the status bar. When a user makes this gesture, the system asks the scroll view closest to the status bar to scroll to the top. If that scroll view has <code>scrollsToTop</code><br>set to <code>NO</code>, its delegate returns <code>NO</code> from <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIScrollViewDelegate_Protocol/index.html#//apple_ref/occ/intfm/UIScrollViewDelegate/scrollViewShouldScrollToTop:" target="_blank" rel="external">scrollViewShouldScrollToTop:</a><br>, or the content is already at the top, nothing happens.</p>
+</blockquote>
+<p>简单点的说就是有两种方式来设定<code>scroll to top</code>，一个是设置<code>scrollsToTop</code>属性，另一个是实现<code>UIScrollView</code>的代理方法<a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIScrollViewDelegate_Protocol/index.html#//apple_ref/occ/intfm/UIScrollViewDelegate/scrollViewShouldScrollToTop:" target="_blank" rel="external">scrollViewShouldScrollToTop:</a>。如果滚动视图<code>scrollsToTop</code>属性设为<code>NO</code>，它的代理方法<a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIScrollViewDelegate_Protocol/index.html#//apple_ref/occ/intfm/UIScrollViewDelegate/scrollViewShouldScrollToTop:" target="_blank" rel="external">scrollViewShouldScrollToTop:</a>返回<code>NO</code>，或者内容已经在顶部了，这样触摸状态栏，是没有任何反应的。</p>
+<p>好了，继续回到上面遇到的问题，既然默认是YES，为什么回到顶部的功能失效了呢，其实仔细想一想就知道了，因为有两个<code>scrollView</code>，他们默认都有<code>scroll to top</code>功能，所以触摸状态栏时，系统无法判断是使哪个<code>ScrollView</code>回到顶部。</p>
+<p>解决方案很简单，就是设置其中一个<code>ScrollView</code>的<code>scrollsToTop</code>值为<code>NO</code>（例如我将广告轮播控件的<code>scrollsToTop</code>设为<code>NO</code>），这样系统就知道要使哪个<code>ScrollView</code>回到顶部了。如果当前页面有多个滚动视图的话，要确保只有一个滚动视图<code>scrollsToTop</code>的值为<code>YES</code>。</p>
 
       
     </div>
@@ -287,13 +298,13 @@ Quick">
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2016/05/06/hello-world/">Hello World</a></p>
+        <p><span>本文标题:</span><a href="/2016/05/06/谈一谈UIScrollView的scrollsToTop属性/">谈一谈UIScrollView的scrollsToTop属性</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Su Bo</a></p>
-        <p><span>发布时间:</span>2016-05-06, 01:18:09</p>
-        <p><span>最后更新:</span>2016-05-06, 01:18:09</p>
+        <p><span>发布时间:</span>2016-05-06, 23:29:46</p>
+        <p><span>最后更新:</span>2016-05-06, 23:47:45</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/05/06/hello-world/" title="Hello World">http://yoursite.com/2016/05/06/hello-world/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/05/06/hello-world/　　作者: Su Bo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/05/06/谈一谈UIScrollView的scrollsToTop属性/" title="谈一谈UIScrollView的scrollsToTop属性">http://yoursite.com/2016/05/06/谈一谈UIScrollView的scrollsToTop属性/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/05/06/谈一谈UIScrollView的scrollsToTop属性/　　作者: Su Bo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -303,12 +314,23 @@ Quick">
 
 
 
+    <nav id="article-nav">
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/05/06/自定义UISearchBar外观/">
+                    自定义UISearchBar外观
+                </a>
+            </div>
+        
+    </nav>
+
   
 </article>
 
     <div id="toc" class="toc-article">
     <strong class="toc-title">文章目录</strong>
-    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+    
 </div>
 <style>
     .left-col .switch-btn {
@@ -365,7 +387,7 @@ Quick">
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Hello World　| 苏波的个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"谈一谈UIScrollView的scrollsToTop属性　| 苏波的个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -377,6 +399,26 @@ Quick">
 
 
 
+
+    
+      <div class="duoshuo" id="comments">
+    <!-- 多说评论框 start -->
+    <div class="ds-thread" data-thread-key="2016/05/06/谈一谈UIScrollView的scrollsToTop属性/" data-title="谈一谈UIScrollView的scrollsToTop属性" data-url="http://yoursite.com/2016/05/06/谈一谈UIScrollView的scrollsToTop属性/"></div>
+    <!-- 多说评论框 end -->
+    <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+    <script type="text/javascript">
+    var duoshuoQuery = {short_name:"null"};
+    (function() {
+        var ds = document.createElement('script');
+        ds.type = 'text/javascript';ds.async = true;
+        ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+        ds.charset = 'UTF-8';
+        (document.getElementsByTagName('head')[0] 
+         || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+    </script>
+    <!-- 多说公共JS代码 end -->
+</div>
 
     
 
@@ -391,11 +433,13 @@ Quick">
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2016/05/06/自定义UISearchBar外观/" title="下一篇: 自定义UISearchBar外观">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/06/hello-world/">Hello World</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/06/谈一谈UIScrollView的scrollsToTop属性/">谈一谈UIScrollView的scrollsToTop属性</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/06/自定义UISearchBar外观/">自定义UISearchBar外观</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/06/UINavigationBar-使用总结/">UINavigationBar 使用总结</a></li></ul>
 
 
 
@@ -415,26 +459,6 @@ Quick">
                 <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
             </div>
         </div>
-        
-            <div class="visit">
-                
-                    <span id="busuanzi_container_site_pv" style='display:none'>
-                        <span id="site-visit" >本站到访数: 
-                            <span id="busuanzi_value_site_uv"></span>
-                        </span>
-                    </span>
-                
-                
-                    <span>, </span>
-                
-                
-                    <span id="busuanzi_container_page_pv" style='display:none'>
-                        <span id="page-visit">本页阅读量: 
-                            <span id="busuanzi_value_page_pv"></span>
-                        </span>
-                    </span>
-                
-            </div>
         
     </div>
 </footer>
