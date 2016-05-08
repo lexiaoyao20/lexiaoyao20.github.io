@@ -160,7 +160,7 @@
                 
                 <section class="switch-part switch-part2">
                     <div class="widget tagcloud" id="js-tagcloud">
-                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/UINavigationBar/">UINavigationBar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIScrollView/">UIScrollView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UISearchBar/">UISearchBar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrollsToTop属性/">scrollsToTop属性</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自定义/">自定义</a></li></ul>
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/NSArray/">NSArray</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NSDictionary/">NSDictionary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UINavigationBar/">UINavigationBar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UIScrollView/">UIScrollView</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/UISearchBar/">UISearchBar</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/scrollsToTop属性/">scrollsToTop属性</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/weak/">weak</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/自定义/">自定义</a></li></ul>
                     </div>
                 </section>
                 
@@ -238,6 +238,71 @@
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
       <div class="body-wrap">
+  
+    <article id="post-弱引用字典" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/08/弱引用字典/" class="article-date">
+      <time datetime="2016-05-08T00:04:15.000Z" itemprop="datePublished">2016-05-08</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/05/08/弱引用字典/">弱引用字典</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+              <h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><p>我们都有用过 <code>UIButton</code> 的这个方法：<br> <code>- (void)addTarget:(nullable id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;</code><br>不知道大家是否有去想过里面的实现原理。<code>addTarget:action:forControlEvents</code> 方法是用什么来保存这个target呢？<br>显然，里面不是用的数组就是用的字典来保存target，而target和action又是一一对应的，所以我猜其内部是用一个字典来保存。</p>
+<p><Excerpt in index | 首页摘要> </p>
+<ul>
+<li>
+          
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+
+      
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NSArray/">NSArray</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NSDictionary/">NSDictionary</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/weak/">weak</a></li></ul>
+    </div>
+
+      
+        <p class="article-more-link">
+          <a href="/2016/05/08/弱引用字典/#more">阅读全文 >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-谈一谈UIScrollView的scrollsToTop属性" class="article article-type-post" itemscope itemprop="blogPost">
   
