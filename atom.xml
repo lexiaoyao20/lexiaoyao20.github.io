@@ -73,31 +73,30 @@
     <link href="http://bobdev.cn/2016/05/06/%E8%B0%88%E4%B8%80%E8%B0%88UIScrollView%E7%9A%84scrollsToTop%E5%B1%9E%E6%80%A7/"/>
     <id>http://bobdev.cn/2016/05/06/谈一谈UIScrollView的scrollsToTop属性/</id>
     <published>2016-05-06T15:29:46.000Z</published>
-    <updated>2016-05-06T15:47:45.000Z</updated>
+    <updated>2016-05-12T14:54:20.000Z</updated>
     
-    <content type="html">&lt;p&gt;相信很多人都没有注意到iOS有这样一个隐藏的功能：当前页面有滚动视图（ &lt;code&gt;UIScrollView&lt;/code&gt; 或者 &lt;code&gt;UIScrollView&lt;/code&gt; 的子类，下面我都称作滚动视图），触摸状态栏，视图会自动滚动的最顶端，相当于一些网页的回到顶端的功能。下面给个图来展示下：&lt;/p&gt;
-&lt;p&gt;&lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt; &lt;/excerpt&gt;&lt;/p&gt;
+    <content type="html">&lt;p&gt;&lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt; &lt;/excerpt&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
 &lt;the rest=&quot;&quot; of=&quot;&quot; contents=&quot;&quot; |=&quot;&quot; 余下全文=&quot;&quot;&gt;
 
 &lt;/the&gt;&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;相信很多人都没有注意到iOS有这样一个隐藏的功能：当前页面有滚动视图（ &lt;code&gt;UIScrollView&lt;/code&gt; 或者 &lt;code&gt;UIScrollView&lt;/code&gt; 的子类，下面我都称作滚动视图），触摸状态栏，视图会自动滚动的最顶端，相当于一些网页的回到顶端的功能。下面给个图来展示下：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/452998-cb4e2f8a121c3cba.gif?imageMogr2/auto-orient/strip&quot; alt=&quot;图1：触摸状态栏回到顶部&quot;&gt;&lt;/p&gt;
-&lt;p&gt;#一. 遇到的问题&lt;br&gt;如果页面有多个滚动视图，如顶部一个广告轮播控件（假如是基于&lt;code&gt;UIScrollView&lt;/code&gt;的轮播控件），下面是一个TableView，你会发现触摸状态栏没有反应了，回到顶部功能失效。&lt;/p&gt;
-&lt;p&gt;#二. 解决问题&lt;br&gt;细细研究了一番返现，&lt;code&gt;UIScrollView&lt;/code&gt;有个&lt;a href=&quot;https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIScrollView_Class/#//apple_ref/occ/instp/UIScrollView/scrollsToTop&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;scrollsToTop&lt;/a&gt;属性，这个属性就是控制滚动到顶部手势的开关。它的默认值是&lt;code&gt;YES&lt;/code&gt;，所以不用我们设置，默认是支持滚动到顶部的。具体详细描述如下：&lt;/p&gt;
+&lt;p&gt;#一. 遇到的问题&lt;br&gt;如果页面有多个滚动视图，如顶部一个广告轮播控件（假如是基于 &lt;code&gt;UIScrollView&lt;/code&gt; 的轮播控件），下面是一个TableView，你会发现触摸状态栏没有反应了，回到顶部功能失效。&lt;/p&gt;
+&lt;p&gt;#二. 解决问题&lt;br&gt;细细研究了一番返现，&lt;code&gt;UIScrollView&lt;/code&gt; 有个&lt;a href=&quot;https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIScrollView_Class/#//apple_ref/occ/instp/UIScrollView/scrollsToTop&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;scrollsToTop&lt;/a&gt;属性，这个属性就是控制滚动到顶部手势的开关。它的默认值是 &lt;code&gt;YES&lt;/code&gt; ，所以不用我们设置，默认是支持滚动到顶部的。具体详细描述如下：&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;The scroll-to-top gesture is a tap on the status bar. When a user makes this gesture, the system asks the scroll view closest to the status bar to scroll to the top. If that scroll view has &lt;code&gt;scrollsToTop&lt;/code&gt;&lt;br&gt;set to &lt;code&gt;NO&lt;/code&gt;, its delegate returns &lt;code&gt;NO&lt;/code&gt; from &lt;a href=&quot;https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIScrollViewDelegate_Protocol/index.html#//apple_ref/occ/intfm/UIScrollViewDelegate/scrollViewShouldScrollToTop:&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;scrollViewShouldScrollToTop:&lt;/a&gt;&lt;br&gt;, or the content is already at the top, nothing happens.&lt;/p&gt;
+&lt;p&gt;The scroll-to-top gesture is a tap on the status bar. When a user makes this gesture, the system asks the scroll view closest to the status bar to scroll to the top. If that scroll view has &lt;code&gt;scrollsToTop&lt;/code&gt;&lt;br&gt;set to &lt;code&gt;NO&lt;/code&gt; , its delegate returns &lt;code&gt;NO&lt;/code&gt; from &lt;a href=&quot;https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIScrollViewDelegate_Protocol/index.html#//apple_ref/occ/intfm/UIScrollViewDelegate/scrollViewShouldScrollToTop:&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;scrollViewShouldScrollToTop:&lt;/a&gt;&lt;br&gt;, or the content is already at the top, nothing happens.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;简单点的说就是有两种方式来设定&lt;code&gt;scroll to top&lt;/code&gt;，一个是设置&lt;code&gt;scrollsToTop&lt;/code&gt;属性，另一个是实现&lt;code&gt;UIScrollView&lt;/code&gt;的代理方法&lt;a href=&quot;https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIScrollViewDelegate_Protocol/index.html#//apple_ref/occ/intfm/UIScrollViewDelegate/scrollViewShouldScrollToTop:&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;scrollViewShouldScrollToTop:&lt;/a&gt;。如果滚动视图&lt;code&gt;scrollsToTop&lt;/code&gt;属性设为&lt;code&gt;NO&lt;/code&gt;，它的代理方法&lt;a href=&quot;https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIScrollViewDelegate_Protocol/index.html#//apple_ref/occ/intfm/UIScrollViewDelegate/scrollViewShouldScrollToTop:&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;scrollViewShouldScrollToTop:&lt;/a&gt;返回&lt;code&gt;NO&lt;/code&gt;，或者内容已经在顶部了，这样触摸状态栏，是没有任何反应的。&lt;/p&gt;
-&lt;p&gt;好了，继续回到上面遇到的问题，既然默认是YES，为什么回到顶部的功能失效了呢，其实仔细想一想就知道了，因为有两个&lt;code&gt;scrollView&lt;/code&gt;，他们默认都有&lt;code&gt;scroll to top&lt;/code&gt;功能，所以触摸状态栏时，系统无法判断是使哪个&lt;code&gt;ScrollView&lt;/code&gt;回到顶部。&lt;/p&gt;
-&lt;p&gt;解决方案很简单，就是设置其中一个&lt;code&gt;ScrollView&lt;/code&gt;的&lt;code&gt;scrollsToTop&lt;/code&gt;值为&lt;code&gt;NO&lt;/code&gt;（例如我将广告轮播控件的&lt;code&gt;scrollsToTop&lt;/code&gt;设为&lt;code&gt;NO&lt;/code&gt;），这样系统就知道要使哪个&lt;code&gt;ScrollView&lt;/code&gt;回到顶部了。如果当前页面有多个滚动视图的话，要确保只有一个滚动视图&lt;code&gt;scrollsToTop&lt;/code&gt;的值为&lt;code&gt;YES&lt;/code&gt;。&lt;/p&gt;
+&lt;p&gt;简单点的说就是有两种方式来设定 &lt;code&gt;scroll to top&lt;/code&gt;，一个是设置 &lt;code&gt;scrollsToTop&lt;/code&gt; 属性，另一个是实现&lt;code&gt;UIScrollView&lt;/code&gt;的代理方法&lt;a href=&quot;https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIScrollViewDelegate_Protocol/index.html#//apple_ref/occ/intfm/UIScrollViewDelegate/scrollViewShouldScrollToTop:&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;scrollViewShouldScrollToTop:&lt;/a&gt;。如果滚动视图&lt;code&gt;scrollsToTop&lt;/code&gt;属性设为 &lt;code&gt;NO&lt;/code&gt; ，它的代理方法&lt;a href=&quot;https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIScrollViewDelegate_Protocol/index.html#//apple_ref/occ/intfm/UIScrollViewDelegate/scrollViewShouldScrollToTop:&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;scrollViewShouldScrollToTop:&lt;/a&gt;返回&lt;code&gt;NO&lt;/code&gt;，或者内容已经在顶部了，这样触摸状态栏，是没有任何反应的。&lt;/p&gt;
+&lt;p&gt;好了，继续回到上面遇到的问题，既然默认是YES，为什么回到顶部的功能失效了呢，其实仔细想一想就知道了，因为有两个 scrollView，他们默认都有 &lt;code&gt;scroll to top&lt;/code&gt; 功能，所以触摸状态栏时，系统无法判断是使哪个ScrollView回到顶部。&lt;/p&gt;
+&lt;p&gt;解决方案很简单，就是设置其中一个ScrollView的 &lt;code&gt;scrollsToTop&lt;/code&gt; 值为 &lt;code&gt;NO&lt;/code&gt;（例如我将广告轮播控件的 &lt;code&gt;scrollsToTop&lt;/code&gt; 设为 &lt;code&gt;NO&lt;/code&gt; ），这样系统就知道要使哪个 &lt;code&gt;ScrollView&lt;/code&gt; 回到顶部了。如果当前页面有多个滚动视图的话，要确保只有一个滚动视图&lt;code&gt;scrollsToTop&lt;/code&gt;的值为&lt;code&gt;YES&lt;/code&gt;。&lt;/p&gt;
 </content>
     
     <summary type="html">
     
-      &lt;p&gt;相信很多人都没有注意到iOS有这样一个隐藏的功能：当前页面有滚动视图（ &lt;code&gt;UIScrollView&lt;/code&gt; 或者 &lt;code&gt;UIScrollView&lt;/code&gt; 的子类，下面我都称作滚动视图），触摸状态栏，视图会自动滚动的最顶端，相当于一些网页的回到顶端的功能。下面给个图来展示下：&lt;/p&gt;
-&lt;p&gt;&lt;Excerpt in index | 首页摘要&gt; &lt;/p&gt;
+      &lt;p&gt;&lt;Excerpt in index | 首页摘要&gt; &lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
     

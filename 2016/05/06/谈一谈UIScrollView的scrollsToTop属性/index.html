@@ -5,17 +5,17 @@
   
   <title>谈一谈UIScrollView的scrollsToTop属性 | Bob的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="相信很多人都没有注意到iOS有这样一个隐藏的功能：当前页面有滚动视图（ UIScrollView 或者 UIScrollView 的子类，下面我都称作滚动视图），触摸状态栏，视图会自动滚动的最顶端，相当于一些网页的回到顶端的功能。下面给个图来展示下：">
+  <meta name="description">
 <meta property="og:type" content="article">
 <meta property="og:title" content="谈一谈UIScrollView的scrollsToTop属性">
 <meta property="og:url" content="http://bobdev.cn/2016/05/06/谈一谈UIScrollView的scrollsToTop属性/index.html">
 <meta property="og:site_name" content="Bob的个人博客">
-<meta property="og:description" content="相信很多人都没有注意到iOS有这样一个隐藏的功能：当前页面有滚动视图（ UIScrollView 或者 UIScrollView 的子类，下面我都称作滚动视图），触摸状态栏，视图会自动滚动的最顶端，相当于一些网页的回到顶端的功能。下面给个图来展示下：">
+<meta property="og:description">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/452998-cb4e2f8a121c3cba.gif?imageMogr2/auto-orient/strip">
-<meta property="og:updated_time" content="2016-05-06T15:47:45.000Z">
+<meta property="og:updated_time" content="2016-05-12T14:54:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="谈一谈UIScrollView的scrollsToTop属性">
-<meta name="twitter:description" content="相信很多人都没有注意到iOS有这样一个隐藏的功能：当前页面有滚动视图（ UIScrollView 或者 UIScrollView 的子类，下面我都称作滚动视图），触摸状态栏，视图会自动滚动的最顶端，相当于一些网页的回到顶端的功能。下面给个图来展示下：">
+<meta name="twitter:description">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/452998-cb4e2f8a121c3cba.gif?imageMogr2/auto-orient/strip">
   
     <link rel="alternative" href="/atom.xml" title="Bob的个人博客" type="application/atom+xml">
@@ -273,23 +273,23 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>相信很多人都没有注意到iOS有这样一个隐藏的功能：当前页面有滚动视图（ <code>UIScrollView</code> 或者 <code>UIScrollView</code> 的子类，下面我都称作滚动视图），触摸状态栏，视图会自动滚动的最顶端，相当于一些网页的回到顶端的功能。下面给个图来展示下：</p>
-<p><excerpt in="" index="" |="" 首页摘要=""> </excerpt></p>
+        <p><excerpt in="" index="" |="" 首页摘要=""> </excerpt></p>
 <ul>
 <li><a id="more"></a>
 <the rest="" of="" contents="" |="" 余下全文="">
 
 </the></li>
 </ul>
+<p>相信很多人都没有注意到iOS有这样一个隐藏的功能：当前页面有滚动视图（ <code>UIScrollView</code> 或者 <code>UIScrollView</code> 的子类，下面我都称作滚动视图），触摸状态栏，视图会自动滚动的最顶端，相当于一些网页的回到顶端的功能。下面给个图来展示下：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/452998-cb4e2f8a121c3cba.gif?imageMogr2/auto-orient/strip" alt="图1：触摸状态栏回到顶部"></p>
-<p>#一. 遇到的问题<br>如果页面有多个滚动视图，如顶部一个广告轮播控件（假如是基于<code>UIScrollView</code>的轮播控件），下面是一个TableView，你会发现触摸状态栏没有反应了，回到顶部功能失效。</p>
-<p>#二. 解决问题<br>细细研究了一番返现，<code>UIScrollView</code>有个<a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIScrollView_Class/#//apple_ref/occ/instp/UIScrollView/scrollsToTop" target="_blank" rel="external">scrollsToTop</a>属性，这个属性就是控制滚动到顶部手势的开关。它的默认值是<code>YES</code>，所以不用我们设置，默认是支持滚动到顶部的。具体详细描述如下：</p>
+<p>#一. 遇到的问题<br>如果页面有多个滚动视图，如顶部一个广告轮播控件（假如是基于 <code>UIScrollView</code> 的轮播控件），下面是一个TableView，你会发现触摸状态栏没有反应了，回到顶部功能失效。</p>
+<p>#二. 解决问题<br>细细研究了一番返现，<code>UIScrollView</code> 有个<a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIScrollView_Class/#//apple_ref/occ/instp/UIScrollView/scrollsToTop" target="_blank" rel="external">scrollsToTop</a>属性，这个属性就是控制滚动到顶部手势的开关。它的默认值是 <code>YES</code> ，所以不用我们设置，默认是支持滚动到顶部的。具体详细描述如下：</p>
 <blockquote>
-<p>The scroll-to-top gesture is a tap on the status bar. When a user makes this gesture, the system asks the scroll view closest to the status bar to scroll to the top. If that scroll view has <code>scrollsToTop</code><br>set to <code>NO</code>, its delegate returns <code>NO</code> from <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIScrollViewDelegate_Protocol/index.html#//apple_ref/occ/intfm/UIScrollViewDelegate/scrollViewShouldScrollToTop:" target="_blank" rel="external">scrollViewShouldScrollToTop:</a><br>, or the content is already at the top, nothing happens.</p>
+<p>The scroll-to-top gesture is a tap on the status bar. When a user makes this gesture, the system asks the scroll view closest to the status bar to scroll to the top. If that scroll view has <code>scrollsToTop</code><br>set to <code>NO</code> , its delegate returns <code>NO</code> from <a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIScrollViewDelegate_Protocol/index.html#//apple_ref/occ/intfm/UIScrollViewDelegate/scrollViewShouldScrollToTop:" target="_blank" rel="external">scrollViewShouldScrollToTop:</a><br>, or the content is already at the top, nothing happens.</p>
 </blockquote>
-<p>简单点的说就是有两种方式来设定<code>scroll to top</code>，一个是设置<code>scrollsToTop</code>属性，另一个是实现<code>UIScrollView</code>的代理方法<a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIScrollViewDelegate_Protocol/index.html#//apple_ref/occ/intfm/UIScrollViewDelegate/scrollViewShouldScrollToTop:" target="_blank" rel="external">scrollViewShouldScrollToTop:</a>。如果滚动视图<code>scrollsToTop</code>属性设为<code>NO</code>，它的代理方法<a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIScrollViewDelegate_Protocol/index.html#//apple_ref/occ/intfm/UIScrollViewDelegate/scrollViewShouldScrollToTop:" target="_blank" rel="external">scrollViewShouldScrollToTop:</a>返回<code>NO</code>，或者内容已经在顶部了，这样触摸状态栏，是没有任何反应的。</p>
-<p>好了，继续回到上面遇到的问题，既然默认是YES，为什么回到顶部的功能失效了呢，其实仔细想一想就知道了，因为有两个<code>scrollView</code>，他们默认都有<code>scroll to top</code>功能，所以触摸状态栏时，系统无法判断是使哪个<code>ScrollView</code>回到顶部。</p>
-<p>解决方案很简单，就是设置其中一个<code>ScrollView</code>的<code>scrollsToTop</code>值为<code>NO</code>（例如我将广告轮播控件的<code>scrollsToTop</code>设为<code>NO</code>），这样系统就知道要使哪个<code>ScrollView</code>回到顶部了。如果当前页面有多个滚动视图的话，要确保只有一个滚动视图<code>scrollsToTop</code>的值为<code>YES</code>。</p>
+<p>简单点的说就是有两种方式来设定 <code>scroll to top</code>，一个是设置 <code>scrollsToTop</code> 属性，另一个是实现<code>UIScrollView</code>的代理方法<a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIScrollViewDelegate_Protocol/index.html#//apple_ref/occ/intfm/UIScrollViewDelegate/scrollViewShouldScrollToTop:" target="_blank" rel="external">scrollViewShouldScrollToTop:</a>。如果滚动视图<code>scrollsToTop</code>属性设为 <code>NO</code> ，它的代理方法<a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIScrollViewDelegate_Protocol/index.html#//apple_ref/occ/intfm/UIScrollViewDelegate/scrollViewShouldScrollToTop:" target="_blank" rel="external">scrollViewShouldScrollToTop:</a>返回<code>NO</code>，或者内容已经在顶部了，这样触摸状态栏，是没有任何反应的。</p>
+<p>好了，继续回到上面遇到的问题，既然默认是YES，为什么回到顶部的功能失效了呢，其实仔细想一想就知道了，因为有两个 scrollView，他们默认都有 <code>scroll to top</code> 功能，所以触摸状态栏时，系统无法判断是使哪个ScrollView回到顶部。</p>
+<p>解决方案很简单，就是设置其中一个ScrollView的 <code>scrollsToTop</code> 值为 <code>NO</code>（例如我将广告轮播控件的 <code>scrollsToTop</code> 设为 <code>NO</code> ），这样系统就知道要使哪个 <code>ScrollView</code> 回到顶部了。如果当前页面有多个滚动视图的话，要确保只有一个滚动视图<code>scrollsToTop</code>的值为<code>YES</code>。</p>
 
       
     </div>
@@ -301,7 +301,7 @@
         <p><span>本文标题:</span><a href="/2016/05/06/谈一谈UIScrollView的scrollsToTop属性/">谈一谈UIScrollView的scrollsToTop属性</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Bob</a></p>
         <p><span>发布时间:</span>2016-05-06, 23:29:46</p>
-        <p><span>最后更新:</span>2016-05-06, 23:47:45</p>
+        <p><span>最后更新:</span>2016-05-12, 22:54:20</p>
         <p>
             <span>原始链接:</span><a class="post-url" href="/2016/05/06/谈一谈UIScrollView的scrollsToTop属性/" title="谈一谈UIScrollView的scrollsToTop属性">http://bobdev.cn/2016/05/06/谈一谈UIScrollView的scrollsToTop属性/</a>
             <span class="copy-path" data-clipboard-text="原文: http://bobdev.cn/2016/05/06/谈一谈UIScrollView的scrollsToTop属性/　　作者: Bob" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
