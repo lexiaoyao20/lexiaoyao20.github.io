@@ -3,13 +3,13 @@
 <head>
   <meta charset="utf-8">
   
-  <title>自定义UISearchBar外观 | 苏波的个人博客</title>
+  <title>自定义UISearchBar外观 | Bob的个人博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description">
 <meta property="og:type" content="article">
 <meta property="og:title" content="自定义UISearchBar外观">
-<meta property="og:url" content="http://yoursite.com/2016/05/06/自定义UISearchBar外观/index.html">
-<meta property="og:site_name" content="苏波的个人博客">
+<meta property="og:url" content="http://bobdev.cn/2016/05/06/自定义UISearchBar外观/index.html">
+<meta property="og:site_name" content="Bob的个人博客">
 <meta property="og:description">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/452998-2fb38aaa38a2b351.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/452998-aa74f9c818acb15c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
@@ -25,7 +25,7 @@
 <meta name="twitter:description">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/452998-2fb38aaa38a2b351.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
   
-    <link rel="alternative" href="/atom.xml" title="苏波的个人博客" type="application/atom+xml">
+    <link rel="alternative" href="/atom.xml" title="Bob的个人博客" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -82,7 +82,7 @@
             <img src="/img/avatar.png" class="animated zoomIn">
         </a>
         <hgroup>
-          <h1 class="header-author"><a href="/">Su Bo</a></h1>
+          <h1 class="header-author"><a href="/">Bob</a></h1>
         </hgroup>
 
         
@@ -200,7 +200,7 @@
       <nav id="mobile-nav">
       <div class="overlay">
           <div class="slider-trigger"></div>
-          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Su Bo</a></h1>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">Bob</a></h1>
       </div>
     <div class="intrude-less">
         <header id="header" class="inner">
@@ -208,7 +208,7 @@
                 <img src="/img/avatar.png" class="animated zoomIn">
             </a>
             <hgroup>
-              <h1 class="header-author"><a href="/" title="回到主页">Su Bo</a></h1>
+              <h1 class="header-author"><a href="/" title="回到主页">Bob</a></h1>
             </hgroup>
             
             <nav class="header-menu">
@@ -293,27 +293,27 @@
 <p>开始以为可能要自己写一个自定义的UISearchBar控件了，后面研究了一番，发现可以设定系统UISearchBar属性来更改，便把经验记录下来。</p>
 <p>首先，我们看下系统默认的SearchBar的样式，离我们的目标样式确实相差很大, 后面我会一步一步详细说明做成我们的目标样式。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/452998-aa74f9c818acb15c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图2：UISearchBar默认样式"></p>
-<h2 id="1-设置背景色"><a href="#1-设置背景色" class="headerlink" title="1. 设置背景色"></a>1. 设置背景色</h2><p>我以白色的背景色为例，下面看看代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">//1. 设置背景颜色</span><br><span class="line">    //设置背景图是为了去掉上下黑线</span><br><span class="line">    self.customSearchBar.backgroundImage = [[UIImage alloc] init];</span><br><span class="line">    // 设置SearchBar的颜色主题为白色</span><br><span class="line">    self.customSearchBar.barTintColor = [UIColor whiteColor];</span><br></pre></td></tr></table></figure></p>
+<h2 id="1-设置背景色"><a href="#1-设置背景色" class="headerlink" title="1. 设置背景色"></a>1. 设置背景色</h2><p>我以白色的背景色为例，下面看看代码：<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//1. 设置背景颜色</span></span><br><span class="line">    <span class="comment">//设置背景图是为了去掉上下黑线</span></span><br><span class="line">    <span class="keyword">self</span>.customSearchBar.backgroundImage = [[<span class="built_in">UIImage</span> alloc] init];</span><br><span class="line">    <span class="comment">// 设置SearchBar的颜色主题为白色</span></span><br><span class="line">    <span class="keyword">self</span>.customSearchBar.barTintColor = [<span class="built_in">UIColor</span> whiteColor];</span><br></pre></td></tr></table></figure></p>
 <p><img src="http://upload-images.jianshu.io/upload_images/452998-334f53955785e12d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图3：设置SearchBar背景色为白色"></p>
-<h2 id="2-设置边框颜色和圆角"><a href="#2-设置边框颜色和圆角" class="headerlink" title="2. 设置边框颜色和圆角"></a>2. 设置边框颜色和圆角</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//2. 设置圆角和边框颜色</span><br><span class="line">    UITextField *searchField = [self.customSearchBar valueForKey:@&quot;searchField&quot;];</span><br><span class="line">    if (searchField) &#123;</span><br><span class="line">        [searchField setBackgroundColor:[UIColor whiteColor]];</span><br><span class="line">        searchField.layer.cornerRadius = 14.0f;</span><br><span class="line">        searchField.layer.borderColor = [UIColor colorWithRed:247/255.0 green:75/255.0 blue:31/255.0 alpha:1].CGColor;</span><br><span class="line">        searchField.layer.borderWidth = 1;</span><br><span class="line">        searchField.layer.masksToBounds = YES;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-设置边框颜色和圆角"><a href="#2-设置边框颜色和圆角" class="headerlink" title="2. 设置边框颜色和圆角"></a>2. 设置边框颜色和圆角</h2><figure class="highlight dns"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">//<span class="number">2</span>. 设置圆角和边框颜色</span><br><span class="line">    UITextField *searchField = [self.customSearchBar valueForKey:@"searchField"]<span class="comment">;</span></span><br><span class="line">    if (searchField) &#123;</span><br><span class="line">        [searchField setBackgroundColor:[UIColor whiteColor]]<span class="comment">;</span></span><br><span class="line">        searchField.layer.cornerRadius = <span class="number">14</span>.<span class="number">0</span>f<span class="comment">;</span></span><br><span class="line">        searchField.layer.borderColor = [UIColor colorWithRed:<span class="number">247/255.0</span> green:<span class="number">75/255.0</span> blue:<span class="number">31/255.0</span> alpha:<span class="number">1</span>].CGColor<span class="comment">;</span></span><br><span class="line">        searchField.layer.borderWidth = <span class="number">1</span><span class="comment">;</span></span><br><span class="line">        searchField.layer.masksToBounds = YES<span class="comment">;</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>这段代码有个特别的地方就是通过KVC获得到UISearchBar的私有变量<br><em>searchField</em>（类型为UITextField），设置SearchBar的边框颜色和圆角实际上也就变成了设置<em>searchField</em>的边框颜色和圆角，你可以试试直接设置SearchBar.layer.borderColor和cornerRadius，会发现这样做是有问题的。</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/452998-6124f34ef12a93c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图4：设置边框颜色和圆角"></p>
 <p>嗯，离预期效果越来越近了，有木有！</p>
-<h2 id="3-设置按钮（取消按钮）的文字和文字颜色"><a href="#3-设置按钮（取消按钮）的文字和文字颜色" class="headerlink" title="3. 设置按钮（取消按钮）的文字和文字颜色"></a>3. 设置按钮（取消按钮）的文字和文字颜色</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">//3. 设置按钮文字和颜色</span><br><span class="line">    [self.customSearchBar fm_setCancelButtonTitle:@&quot;取消&quot;];</span><br><span class="line">    self.customSearchBar.tintColor = [UIColor colorWithRed:86/255.0 green:179/255.0 blue:11/255.0 alpha:1];</span><br><span class="line">    //修正光标颜色</span><br><span class="line">    [searchField setTintColor:[UIColor blackColor]];</span><br><span class="line"></span><br><span class="line">//其中fm_setCancelButtonTitle是我写的UISearchBar一个分类的方法</span><br><span class="line">- (void)fm_setCancelButtonTitle:(NSString *)title &#123;</span><br><span class="line">    if (IS_IOS9) &#123;</span><br><span class="line">        [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UISearchBar class]]] setTitle:title];</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">        [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTitle:title];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="3-设置按钮（取消按钮）的文字和文字颜色"><a href="#3-设置按钮（取消按钮）的文字和文字颜色" class="headerlink" title="3. 设置按钮（取消按钮）的文字和文字颜色"></a>3. 设置按钮（取消按钮）的文字和文字颜色</h2><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//3. 设置按钮文字和颜色</span></span><br><span class="line">    [<span class="keyword">self</span>.customSearchBar fm_setCancelButtonTitle:<span class="string">@"取消"</span>];</span><br><span class="line">    <span class="keyword">self</span>.customSearchBar.tintColor = [<span class="built_in">UIColor</span> colorWithRed:<span class="number">86</span>/<span class="number">255.0</span> green:<span class="number">179</span>/<span class="number">255.0</span> blue:<span class="number">11</span>/<span class="number">255.0</span> alpha:<span class="number">1</span>];</span><br><span class="line">    <span class="comment">//修正光标颜色</span></span><br><span class="line">    [searchField setTintColor:[<span class="built_in">UIColor</span> blackColor]];</span><br><span class="line"></span><br><span class="line"><span class="comment">//其中fm_setCancelButtonTitle是我写的UISearchBar一个分类的方法</span></span><br><span class="line">- (<span class="keyword">void</span>)fm_setCancelButtonTitle:(<span class="built_in">NSString</span> *)title &#123;</span><br><span class="line">    <span class="keyword">if</span> (IS_IOS9) &#123;</span><br><span class="line">        [[<span class="built_in">UIBarButtonItem</span> appearanceWhenContainedInInstancesOfClasses:@[[<span class="built_in">UISearchBar</span> class]]] setTitle:title];</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        [[<span class="built_in">UIBarButtonItem</span> appearanceWhenContainedIn:[<span class="built_in">UISearchBar</span> class], <span class="literal">nil</span>] setTitle:title];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="http://upload-images.jianshu.io/upload_images/452998-a5e30981395601fc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图5：设置按钮文字和颜色"></p>
 <blockquote>
 <p>需要特别注意的是设置searchBar的tintColor会使输入框的光标颜色改变，可以通过设置searchField的tintColor来修正。</p>
 </blockquote>
-<h2 id="4-设置输入框的文字颜色和字体"><a href="#4-设置输入框的文字颜色和字体" class="headerlink" title="4. 设置输入框的文字颜色和字体"></a>4. 设置输入框的文字颜色和字体</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">//4. 设置输入框文字颜色和字体</span><br><span class="line">    [self.customSearchBar fm_setTextColor:[UIColor blackColor]];</span><br><span class="line">    [self.customSearchBar fm_setTextFont:[UIFont systemFontOfSize:14]];</span><br><span class="line"></span><br><span class="line">//下面两个方法是UISearchBar分类代码</span><br><span class="line">- (void)fm_setTextColor:(UIColor *)textColor &#123;</span><br><span class="line">    if (IS_IOS9) &#123;</span><br><span class="line">        [UITextField appearanceWhenContainedInInstancesOfClasses:@[[UISearchBar class]]].textColor = textColor;</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">        [[UITextField appearanceWhenContainedIn:[UISearchBar class], nil] setTextColor:textColor];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (void)fm_setCancelButtonTitle:(NSString *)title &#123;</span><br><span class="line">    if (IS_IOS9) &#123;</span><br><span class="line">        [[UIBarButtonItem appearanceWhenContainedInInstancesOfClasses:@[[UISearchBar class]]] setTitle:title];</span><br><span class="line">    &#125;else &#123;</span><br><span class="line">        [[UIBarButtonItem appearanceWhenContainedIn:[UISearchBar class], nil] setTitle:title];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="4-设置输入框的文字颜色和字体"><a href="#4-设置输入框的文字颜色和字体" class="headerlink" title="4. 设置输入框的文字颜色和字体"></a>4. 设置输入框的文字颜色和字体</h2><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//4. 设置输入框文字颜色和字体</span></span><br><span class="line">    [<span class="keyword">self</span>.customSearchBar fm_setTextColor:[<span class="built_in">UIColor</span> blackColor]];</span><br><span class="line">    [<span class="keyword">self</span>.customSearchBar fm_setTextFont:[<span class="built_in">UIFont</span> systemFontOfSize:<span class="number">14</span>]];</span><br><span class="line"></span><br><span class="line"><span class="comment">//下面两个方法是UISearchBar分类代码</span></span><br><span class="line">- (<span class="keyword">void</span>)fm_setTextColor:(<span class="built_in">UIColor</span> *)textColor &#123;</span><br><span class="line">    <span class="keyword">if</span> (IS_IOS9) &#123;</span><br><span class="line">        [<span class="built_in">UITextField</span> appearanceWhenContainedInInstancesOfClasses:@[[<span class="built_in">UISearchBar</span> class]]].textColor = textColor;</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        [[<span class="built_in">UITextField</span> appearanceWhenContainedIn:[<span class="built_in">UISearchBar</span> class], <span class="literal">nil</span>] setTextColor:textColor];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">- (<span class="keyword">void</span>)fm_setCancelButtonTitle:(<span class="built_in">NSString</span> *)title &#123;</span><br><span class="line">    <span class="keyword">if</span> (IS_IOS9) &#123;</span><br><span class="line">        [[<span class="built_in">UIBarButtonItem</span> appearanceWhenContainedInInstancesOfClasses:@[[<span class="built_in">UISearchBar</span> class]]] setTitle:title];</span><br><span class="line">    &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">        [[<span class="built_in">UIBarButtonItem</span> appearanceWhenContainedIn:[<span class="built_in">UISearchBar</span> class], <span class="literal">nil</span>] setTitle:title];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p><img src="http://upload-images.jianshu.io/upload_images/452998-f77ae765fab77822.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图6：最终对比效果图"></p>
-<h2 id="5-如何设置搜索图标"><a href="#5-如何设置搜索图标" class="headerlink" title="5. 如何设置搜索图标"></a>5. 如何设置搜索图标</h2><p>下面评论中有简友问我怎么更改默认的搜索图标，我查了下UISearchBar的API，发现有方法可以更改的。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//5. 设置搜索Icon</span><br><span class="line">    [self.customSearchBar setImage:[UIImage imageNamed:@&quot;Search_Icon&quot;]</span><br><span class="line">                  forSearchBarIcon:UISearchBarIconSearch</span><br><span class="line">                             state:UIControlStateNormal];</span><br></pre></td></tr></table></figure></p>
+<h2 id="5-如何设置搜索图标"><a href="#5-如何设置搜索图标" class="headerlink" title="5. 如何设置搜索图标"></a>5. 如何设置搜索图标</h2><p>下面评论中有简友问我怎么更改默认的搜索图标，我查了下UISearchBar的API，发现有方法可以更改的。<br><figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//<span class="number">5</span>. 设置搜索Icon</span><br><span class="line">    [<span class="literal">self</span>.customSearchBar <span class="built_in">set</span>Image:[UIImage imageNamed:@<span class="string">"Search_Icon"</span>]</span><br><span class="line">                  <span class="keyword">for</span>SearchBarIcon:UISearchBarIconSearch</span><br><span class="line">                             <span class="keyword">state</span>:UIControlStateNormal];</span><br></pre></td></tr></table></figure></p>
 <p>为了跟系统默认Icon的有个明显的对比，我特殊找了张绿色的搜索Icon，效果见下图：</p>
 <p><img src="http://upload-images.jianshu.io/upload_images/452998-447342dd9b0e5606.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="设置搜索Icon.png"></p>
 <blockquote>
 <p>Tips: 还可以设置其他的Icon（如清除按钮图标），也是用上面的方法，具体要设置什么，可以去看看UISearchBarIcon这个枚举。</p>
 </blockquote>
 <h2 id="最后，介绍下QQ的搜索样式的实现"><a href="#最后，介绍下QQ的搜索样式的实现" class="headerlink" title="最后，介绍下QQ的搜索样式的实现"></a>最后，介绍下QQ的搜索样式的实现</h2><p><img src="http://upload-images.jianshu.io/upload_images/452998-cd997d790643d76e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="图7：类似QQ搜索框样式"></p>
-<p>很简单，在storyboard中设置searchBar的Bar Style为Minimal，或者用代码设置 ：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//设置类似QQ搜索框</span><br><span class="line">    self.minimalSearchBar.searchBarStyle = UISearchBarStyleMinimal;</span><br></pre></td></tr></table></figure></p>
+<p>很简单，在storyboard中设置searchBar的Bar Style为Minimal，或者用代码设置 ：<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//设置类似QQ搜索框</span></span><br><span class="line">    <span class="keyword">self</span>.minimalSearchBar.searchBarStyle = <span class="built_in">UISearchBarStyleMinimal</span>;</span><br></pre></td></tr></table></figure></p>
 <p>完整代码在<a href="https://github.com/lexiaoyao20/CustomSearchBar/tree/master" target="_blank" rel="external">这里</a>。</p>
 
       
@@ -324,12 +324,12 @@
     
     <div class="copyright">
         <p><span>本文标题:</span><a href="/2016/05/06/自定义UISearchBar外观/">自定义UISearchBar外观</a></p>
-        <p><span>文章作者:</span><a href="/" title="回到主页">Su Bo</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">Bob</a></p>
         <p><span>发布时间:</span>2016-05-06, 23:19:53</p>
         <p><span>最后更新:</span>2016-05-06, 23:38:12</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2016/05/06/自定义UISearchBar外观/" title="自定义UISearchBar外观">http://yoursite.com/2016/05/06/自定义UISearchBar外观/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/05/06/自定义UISearchBar外观/　　作者: Su Bo" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/05/06/自定义UISearchBar外观/" title="自定义UISearchBar外观">http://bobdev.cn/2016/05/06/自定义UISearchBar外观/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://bobdev.cn/2016/05/06/自定义UISearchBar外观/　　作者: Bob" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -418,7 +418,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"自定义UISearchBar外观　| 苏波的个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"自定义UISearchBar外观　| Bob的个人博客　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -434,7 +434,7 @@
     
       <div class="duoshuo" id="comments">
     <!-- 多说评论框 start -->
-    <div class="ds-thread" data-thread-key="2016/05/06/自定义UISearchBar外观/" data-title="自定义UISearchBar外观" data-url="http://yoursite.com/2016/05/06/自定义UISearchBar外观/"></div>
+    <div class="ds-thread" data-thread-key="2016/05/06/自定义UISearchBar外观/" data-title="自定义UISearchBar外观" data-url="http://bobdev.cn/2016/05/06/自定义UISearchBar外观/"></div>
     <!-- 多说评论框 end -->
     <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
     <script type="text/javascript">
@@ -472,7 +472,7 @@
         
     </div>
 
-    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/08/弱引用字典/">弱引用字典</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/06/谈一谈UIScrollView的scrollsToTop属性/">谈一谈UIScrollView的scrollsToTop属性</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/06/自定义UISearchBar外观/">自定义UISearchBar外观</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/06/UINavigationBar-使用总结/">UINavigationBar 使用总结</a></li></ul>
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2016/05/12/iOS-如何实现弱引用字典/">iOS - 如何实现弱引用字典</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/06/谈一谈UIScrollView的scrollsToTop属性/">谈一谈UIScrollView的scrollsToTop属性</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/06/自定义UISearchBar外观/">自定义UISearchBar外观</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/05/06/UINavigationBar-使用总结/">UINavigationBar 使用总结</a></li></ul>
 
 
 
@@ -486,7 +486,7 @@
         <div id="footer-info">
             <div class="footer-left">
                 <i class="fa fa-copyright"></i> 
-                2016 Su Bo
+                2016 Bob
             </div>
             <div class="footer-right">
                 <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
