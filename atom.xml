@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://bobdev.cn/"/>
-  <updated>2016-05-12T13:59:18.000Z</updated>
+  <updated>2016-05-14T09:03:35.000Z</updated>
   <id>http://bobdev.cn/</id>
   
   <author>
@@ -20,16 +20,9 @@
     <link href="http://bobdev.cn/2016/05/12/iOS-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%BC%B1%E5%BC%95%E7%94%A8%E5%AD%97%E5%85%B8/"/>
     <id>http://bobdev.cn/2016/05/12/iOS-如何实现弱引用字典/</id>
     <published>2016-05-12T13:24:46.000Z</published>
-    <updated>2016-05-12T13:59:18.000Z</updated>
+    <updated>2016-05-14T09:03:35.000Z</updated>
     
-    <content type="html">&lt;p&gt;&lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt; &lt;/excerpt&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;the rest=&quot;&quot; of=&quot;&quot; contents=&quot;&quot; |=&quot;&quot; 余下全文=&quot;&quot;&gt;
-
-&lt;/the&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h2 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h2&gt;&lt;p&gt;我们都有用过 &lt;code&gt;UIButton&lt;/code&gt; 的这个方法：&lt;br&gt; &lt;code&gt;- (void)addTarget:(nullable id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;&lt;/code&gt;&lt;br&gt;不知道大家是否有去想过里面的实现原理。&lt;code&gt;addTarget:action:forControlEvents&lt;/code&gt; 方法是用什么来保存这个target呢？&lt;br&gt;显然，里面不是用的数组就是用的字典来保存target，而target和action又是一一对应的，所以我猜其内部是用一个字典来保存。&lt;/p&gt;
+    <content type="html">&lt;h2 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h2&gt;&lt;p&gt;我们都有用过 &lt;code&gt;UIButton&lt;/code&gt; 的这个方法：&lt;br&gt; &lt;code&gt;- (void)addTarget:(nullable id)target action:(SEL)action forControlEvents:(UIControlEvents)controlEvents;&lt;/code&gt;&lt;br&gt;不知道大家是否有去想过里面的实现原理。&lt;code&gt;addTarget:action:forControlEvents&lt;/code&gt; 方法是用什么来保存这个target呢？&lt;br&gt;显然，里面不是用的数组就是用的字典来保存target，而target和action又是一一对应的，所以我猜其内部是用一个字典来保存。&lt;/p&gt;
 &lt;p&gt;但是，我们都知道 &lt;code&gt;NSMutableDictionary&lt;/code&gt; 的 &lt;a href=&quot;https://developer.apple.com/library/ios/documentation/Cocoa/Reference/Foundation/Classes/NSMutableDictionary_Class/index.html#//apple_ref/occ/instm/NSMutableDictionary/setObject:forKey:&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;- setObject:forKey:&lt;/a&gt; 方法会强引用对象，这样就会很容易造成循环引用。下面举个例子来说明一下。&lt;/p&gt;
 &lt;p&gt;例如，我们有一个viewController，viewController上有对 &lt;code&gt;UIButton&lt;/code&gt; 的强引用，&lt;code&gt;UIButton&lt;/code&gt; 调用 &lt;code&gt;addTarget:action:forControlEvents&lt;/code&gt; 中这个target又是viewController，示例代码如下：&lt;br&gt;&lt;figure class=&quot;highlight objectivec&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;22&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;23&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;24&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;25&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;@interface&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;ViewController&lt;/span&gt; ()&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;@property&lt;/span&gt; (&lt;span class=&quot;keyword&quot;&gt;strong&lt;/span&gt;, &lt;span class=&quot;keyword&quot;&gt;nonatomic&lt;/span&gt;) &lt;span class=&quot;built_in&quot;&gt;UIButton&lt;/span&gt; *button;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;@end&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;class&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;@implementation&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;ViewController&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt;)viewDidLoad &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [&lt;span class=&quot;keyword&quot;&gt;super&lt;/span&gt; viewDidLoad];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.button = [[&lt;span class=&quot;built_in&quot;&gt;UIButton&lt;/span&gt; alloc] initWithFrame:&lt;span class=&quot;built_in&quot;&gt;CGRectMake&lt;/span&gt;(&lt;span class=&quot;number&quot;&gt;50&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;50&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;100&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;32&lt;/span&gt;)];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.button setTitle:&lt;span class=&quot;string&quot;&gt;@&quot;Button&quot;&lt;/span&gt; forState:&lt;span class=&quot;built_in&quot;&gt;UIControlStateNormal&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.button setBackgroundColor:[&lt;span class=&quot;built_in&quot;&gt;UIColor&lt;/span&gt; redColor]];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.button.titleLabel.font = [&lt;span class=&quot;built_in&quot;&gt;UIFont&lt;/span&gt; systemFontOfSize:&lt;span class=&quot;number&quot;&gt;19&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.button addTarget:&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt; action:&lt;span class=&quot;keyword&quot;&gt;@selector&lt;/span&gt;(touchButton:) forControlEvents:&lt;span class=&quot;built_in&quot;&gt;UIControlEventTouchUpInside&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt;)touchButton:(&lt;span class=&quot;built_in&quot;&gt;UIButton&lt;/span&gt; *)button &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;NSLog&lt;/span&gt;(&lt;span class=&quot;string&quot;&gt;@&quot;touchButton&quot;&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;@end&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
 &lt;p&gt;按照常规的逻辑，会形成如下图的一个循环引用。&lt;/p&gt;
@@ -53,9 +46,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;&lt;Excerpt in index | 首页摘要&gt; &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
+      &lt;h2 id=&quot;引言&quot;&gt;&lt;a href=&quot;#引言&quot; class=&quot;headerlink&quot; title=&quot;引言&quot;&gt;&lt;/a&gt;引言&lt;/h2&gt;&lt;p&gt;我们都有用过 &lt;code&gt;UIButton&lt;/code&gt; 的这个方法：&lt;br&gt; &lt;code&gt;- (void)addTarget:(nulla
     
     </summary>
     
@@ -73,16 +64,9 @@
     <link href="http://bobdev.cn/2016/05/06/%E8%B0%88%E4%B8%80%E8%B0%88UIScrollView%E7%9A%84scrollsToTop%E5%B1%9E%E6%80%A7/"/>
     <id>http://bobdev.cn/2016/05/06/谈一谈UIScrollView的scrollsToTop属性/</id>
     <published>2016-05-06T15:29:46.000Z</published>
-    <updated>2016-05-12T14:54:20.000Z</updated>
+    <updated>2016-05-14T11:41:09.000Z</updated>
     
-    <content type="html">&lt;p&gt;&lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt; &lt;/excerpt&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;the rest=&quot;&quot; of=&quot;&quot; contents=&quot;&quot; |=&quot;&quot; 余下全文=&quot;&quot;&gt;
-
-&lt;/the&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;相信很多人都没有注意到iOS有这样一个隐藏的功能：当前页面有滚动视图（ &lt;code&gt;UIScrollView&lt;/code&gt; 或者 &lt;code&gt;UIScrollView&lt;/code&gt; 的子类，下面我都称作滚动视图），触摸状态栏，视图会自动滚动的最顶端，相当于一些网页的回到顶端的功能。下面给个图来展示下：&lt;/p&gt;
+    <content type="html">&lt;p&gt;相信很多人都没有注意到iOS有这样一个隐藏的功能：当前页面有滚动视图（ &lt;code&gt;UIScrollView&lt;/code&gt; 或者 &lt;code&gt;UIScrollView&lt;/code&gt; 的子类，下面我都称作滚动视图），触摸状态栏，视图会自动滚动的最顶端，相当于一些网页的回到顶端的功能。下面给个图来展示下：&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/452998-cb4e2f8a121c3cba.gif?imageMogr2/auto-orient/strip&quot; alt=&quot;图1：触摸状态栏回到顶部&quot;&gt;&lt;/p&gt;
 &lt;p&gt;#一. 遇到的问题&lt;br&gt;如果页面有多个滚动视图，如顶部一个广告轮播控件（假如是基于 &lt;code&gt;UIScrollView&lt;/code&gt; 的轮播控件），下面是一个TableView，你会发现触摸状态栏没有反应了，回到顶部功能失效。&lt;/p&gt;
 &lt;p&gt;#二. 解决问题&lt;br&gt;细细研究了一番返现，&lt;code&gt;UIScrollView&lt;/code&gt; 有个&lt;a href=&quot;https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIScrollView_Class/#//apple_ref/occ/instp/UIScrollView/scrollsToTop&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;scrollsToTop&lt;/a&gt;属性，这个属性就是控制滚动到顶部手势的开关。它的默认值是 &lt;code&gt;YES&lt;/code&gt; ，所以不用我们设置，默认是支持滚动到顶部的。具体详细描述如下：&lt;/p&gt;
@@ -96,11 +80,11 @@
     
     <summary type="html">
     
-      &lt;p&gt;&lt;Excerpt in index | 首页摘要&gt; &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
+      &lt;p&gt;相信很多人都没有注意到iOS有这样一个隐藏的功能：当前页面有滚动视图（ &lt;code&gt;UIScrollView&lt;/code&gt; 或者 &lt;code&gt;UIScrollView&lt;/code&gt; 的子类，下面我都称作滚动视图），触摸状态栏，视图会自动滚动的最顶端，相当于一些网页的回到顶端
     
     </summary>
+    
+      <category term="iOS开发" scheme="http://bobdev.cn/categories/iOS%E5%BC%80%E5%8F%91/"/>
     
     
       <category term="UIScrollView" scheme="http://bobdev.cn/tags/UIScrollView/"/>
@@ -114,16 +98,9 @@
     <link href="http://bobdev.cn/2016/05/06/%E8%87%AA%E5%AE%9A%E4%B9%89UISearchBar%E5%A4%96%E8%A7%82/"/>
     <id>http://bobdev.cn/2016/05/06/自定义UISearchBar外观/</id>
     <published>2016-05-06T15:19:53.000Z</published>
-    <updated>2016-05-06T15:38:12.000Z</updated>
+    <updated>2016-05-14T11:41:22.000Z</updated>
     
-    <content type="html">&lt;p&gt;&lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt; &lt;/excerpt&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;the rest=&quot;&quot; of=&quot;&quot; contents=&quot;&quot; |=&quot;&quot; 余下全文=&quot;&quot;&gt;
-
-&lt;/the&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;最近，在项目过程中遇到要自定义SearchBar的外观，虽然自己觉得用系统默认的外观就行了，不过UI设计师要求不用系统的默认样式，要跟app主题保持一致。&lt;/p&gt;
+    <content type="html">&lt;p&gt;最近，在项目过程中遇到要自定义SearchBar的外观，虽然自己觉得用系统默认的外观就行了，不过UI设计师要求不用系统的默认样式，要跟app主题保持一致。&lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/452998-2fb38aaa38a2b351.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240&quot; alt=&quot;图1：设计效果图&quot;&gt;&lt;/p&gt;
 &lt;p&gt;从上图可以看出，我们要做的UISearchBar要有圆角，边框颜色，取消按钮颜色，背景透明等等。&lt;/p&gt;
 &lt;p&gt;开始以为可能要自己写一个自定义的UISearchBar控件了，后面研究了一番，发现可以设定系统UISearchBar属性来更改，便把经验记录下来。&lt;/p&gt;
@@ -155,9 +132,8 @@
     
     <summary type="html">
     
-      &lt;p&gt;&lt;Excerpt in index | 首页摘要&gt; &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
+      &lt;p&gt;最近，在项目过程中遇到要自定义SearchBar的外观，虽然自己觉得用系统默认的外观就行了，不过UI设计师要求不用系统的默认样式，要跟app主题保持一致。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_ima
     
     </summary>
     
@@ -173,16 +149,9 @@
     <link href="http://bobdev.cn/2016/05/06/UINavigationBar-%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/"/>
     <id>http://bobdev.cn/2016/05/06/UINavigationBar-使用总结/</id>
     <published>2016-05-06T15:11:42.000Z</published>
-    <updated>2016-05-06T15:27:52.000Z</updated>
+    <updated>2016-05-14T11:41:34.000Z</updated>
     
     <content type="html">&lt;p&gt;UINavigationBar是我们在开发过程中经常要用到的一个控件，下面我会为大家介绍一些常用的用法。&lt;/p&gt;
-&lt;p&gt;&lt;excerpt in=&quot;&quot; index=&quot;&quot; |=&quot;&quot; 首页摘要=&quot;&quot;&gt; &lt;/excerpt&gt;&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
-&lt;the rest=&quot;&quot; of=&quot;&quot; contents=&quot;&quot; |=&quot;&quot; 余下全文=&quot;&quot;&gt;
-
-&lt;/the&gt;&lt;/li&gt;
-&lt;/ul&gt;
 &lt;h2 id=&quot;1-设置导航栏的标题&quot;&gt;&lt;a href=&quot;#1-设置导航栏的标题&quot; class=&quot;headerlink&quot; title=&quot;1. 设置导航栏的标题&quot;&gt;&lt;/a&gt;1. 设置导航栏的标题&lt;/h2&gt;&lt;p&gt;这个不多说，直接上代码&lt;br&gt;&lt;code&gt;self.navigationItem.title = @&amp;quot;UINavigationBar使用总结&amp;quot;;&lt;/code&gt;&lt;/p&gt;
 &lt;h2 id=&quot;2-设置导航栏的背景颜色&quot;&gt;&lt;a href=&quot;#2-设置导航栏的背景颜色&quot; class=&quot;headerlink&quot; title=&quot;2. 设置导航栏的背景颜色&quot;&gt;&lt;/a&gt;2. 设置导航栏的背景颜色&lt;/h2&gt;&lt;figure class=&quot;highlight objectivec&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//通过barTintColor来设置背景色&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt; &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.navigationController.navigationBar.barTintColor = [&lt;span class=&quot;built_in&quot;&gt;UIColor&lt;/span&gt; redColor];&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;p&gt;得到的效果如下：&lt;/p&gt;
@@ -287,9 +256,7 @@
     <summary type="html">
     
       &lt;p&gt;UINavigationBar是我们在开发过程中经常要用到的一个控件，下面我会为大家介绍一些常用的用法。&lt;/p&gt;
-&lt;p&gt;&lt;Excerpt in index | 首页摘要&gt; &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
+&lt;h2 id=&quot;1-设置导航栏的标题&quot;&gt;&lt;a href=&quot;#1-设置导航栏的标题&quot; class=&quot;headerlink&quot; title=&quot;1. 设置导航栏的标题&quot;
     
     </summary>
     

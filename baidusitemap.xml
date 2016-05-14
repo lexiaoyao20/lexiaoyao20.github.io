@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+  <url>
+    <loc>http://bobdev.cn/2016/05/06/UINavigationBar-%E4%BD%BF%E7%94%A8%E6%80%BB%E7%BB%93/</loc>
+    <lastmod>2016-05-14T11:41:34.000Z</lastmod>
+    <data>
+        <display>
+        <title>UINavigationBar 使用总结</title>
+        <pubTime>2016-05-06T15:11:42.000Z</pubTime>
+        
+        <tag>UINavigationBar</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://bobdev.cn/2016/05/06/%E8%87%AA%E5%AE%9A%E4%B9%89UISearchBar%E5%A4%96%E8%A7%82/</loc>
+    <lastmod>2016-05-14T11:41:22.000Z</lastmod>
+    <data>
+        <display>
+        <title>自定义UISearchBar外观</title>
+        <pubTime>2016-05-06T15:19:53.000Z</pubTime>
+        
+        <tag>UISearchBar</tag>
+         
+        <tag>自定义</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://bobdev.cn/2016/05/06/%E8%B0%88%E4%B8%80%E8%B0%88UIScrollView%E7%9A%84scrollsToTop%E5%B1%9E%E6%80%A7/</loc>
+    <lastmod>2016-05-14T11:41:09.000Z</lastmod>
+    <data>
+        <display>
+        <title>谈一谈UIScrollView的scrollsToTop属性</title>
+        <pubTime>2016-05-06T15:29:46.000Z</pubTime>
+        
+        <tag>UIScrollView</tag>
+         
+        <tag>scrollsToTop属性</tag>
+         
+         
+           
+             
+              <breadCrumb title="iOS开发" url="http://bobdev.cn/categories/iOS%E5%BC%80%E5%8F%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+  <url>
+    <loc>http://bobdev.cn/2016/05/12/iOS-%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E5%BC%B1%E5%BC%95%E7%94%A8%E5%AD%97%E5%85%B8/</loc>
+    <lastmod>2016-05-14T09:03:35.000Z</lastmod>
+    <data>
+        <display>
+        <title>iOS - 如何实现弱引用字典</title>
+        <pubTime>2016-05-12T13:24:46.000Z</pubTime>
+        
+        <tag>weak</tag>
+         
+        <tag>NSDictionary</tag>
+         
+        <tag>NSArray</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+    
+</urlset>

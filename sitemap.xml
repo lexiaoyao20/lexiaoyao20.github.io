@@ -3,17 +3,22 @@
 
     <sitemap>
         <loc>http://bobdev.cn/post-sitemap.xml</loc>
-        <lastmod>2016-05-12T14:54:20.000Z</lastmod>
+        <lastmod>2016-05-14T11:41:34.000Z</lastmod>
     </sitemap>
 
     <sitemap>
         <loc>http://bobdev.cn/page-sitemap.xml</loc>
-        <lastmod>2016-05-06T15:34:27.000Z</lastmod>
+        <lastmod>2016-05-14T09:43:37.000Z</lastmod>
+    </sitemap>
+
+    <sitemap>
+        <loc>http://bobdev.cn/category-sitemap.xml</loc>
+        <lastmod>2016-05-14T11:41:09.000Z</lastmod>
     </sitemap>
 
     <sitemap>
         <loc>http://bobdev.cn/tag-sitemap.xml</loc>
-        <lastmod>2016-05-06T15:27:52.000Z</lastmod>
+        <lastmod>2016-05-14T09:03:35.000Z</lastmod>
     </sitemap>
 
 </sitemapindex>
