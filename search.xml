@@ -33,7 +33,7 @@
       <title><![CDATA[谈一谈UIScrollView的scrollsToTop属性]]></title>
       <url>http://bobdev.cn/2016/05/06/%E8%B0%88%E4%B8%80%E8%B0%88UIScrollView%E7%9A%84scrollsToTop%E5%B1%9E%E6%80%A7/</url>
       <content type="html"><![CDATA[<p>相信很多人都没有注意到iOS有这样一个隐藏的功能：当前页面有滚动视图（ <code>UIScrollView</code> 或者 <code>UIScrollView</code> 的子类，下面我都称作滚动视图），触摸状态栏，视图会自动滚动的最顶端，相当于一些网页的回到顶端的功能。下面给个图来展示下：</p>
-<p><img src="http://upload-images.jianshu.io/upload_images/452998-cb4e2f8a121c3cba.gif?imageMogr2/auto-orient/strip" alt="图1：触摸状态栏回到顶部"></p>
+<p><img src="http://o7632ob54.bkt.clouddn.com/scrollToTop.gif" alt="图1：触摸状态栏回到顶部"></p>
 <p>#一. 遇到的问题<br>如果页面有多个滚动视图，如顶部一个广告轮播控件（假如是基于 <code>UIScrollView</code> 的轮播控件），下面是一个TableView，你会发现触摸状态栏没有反应了，回到顶部功能失效。</p>
 <p>#二. 解决问题<br>细细研究了一番返现，<code>UIScrollView</code> 有个<a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIScrollView_Class/#//apple_ref/occ/instp/UIScrollView/scrollsToTop" target="_blank" rel="external">scrollsToTop</a>属性，这个属性就是控制滚动到顶部手势的开关。它的默认值是 <code>YES</code> ，所以不用我们设置，默认是支持滚动到顶部的。具体详细描述如下：</p>
 <blockquote>
