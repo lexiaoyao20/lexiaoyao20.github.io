@@ -30,29 +30,29 @@
     </url>
 
     <url>
+        <loc>http://bobdev.cn/tags/UINavigationBar/</loc>
+        <lastmod>2016-05-14T13:30:07.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>http://bobdev.cn/tags/weak/</loc>
-        <lastmod>2016-05-14T13:30:03.000Z</lastmod>
+        <lastmod>2016-05-26T16:38:53.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://bobdev.cn/tags/NSDictionary/</loc>
-        <lastmod>2016-05-14T13:30:03.000Z</lastmod>
+        <lastmod>2016-05-26T16:38:53.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>http://bobdev.cn/tags/NSArray/</loc>
-        <lastmod>2016-05-14T13:30:03.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>http://bobdev.cn/tags/UINavigationBar/</loc>
-        <lastmod>2016-05-14T13:30:07.000Z</lastmod>
+        <lastmod>2016-05-26T16:38:53.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
