@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://bobdev.cn/"/>
-  <updated>2016-05-26T16:38:53.000Z</updated>
+  <updated>2016-05-29T09:06:20.000Z</updated>
   <id>http://bobdev.cn/</id>
   
   <author>
@@ -14,6 +14,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>开源一个基于UICollectionView的标签展示控件</title>
+    <link href="http://bobdev.cn/2016/05/29/%E5%BC%80%E6%BA%90%E4%B8%80%E4%B8%AA%E5%9F%BA%E4%BA%8EUICollectionView%E7%9A%84%E6%A0%87%E7%AD%BE%E5%B1%95%E7%A4%BA%E6%8E%A7%E4%BB%B6/"/>
+    <id>http://bobdev.cn/2016/05/29/开源一个基于UICollectionView的标签展示控件/</id>
+    <published>2016-05-29T09:04:43.000Z</published>
+    <updated>2016-05-29T09:06:20.000Z</updated>
+    
+    <content type="html">&lt;p&gt;首先，先上效果图。&lt;br&gt;示例一，仿天猫热门搜索标签的效果：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/452998-92d0c01e7f97fe2b.gif?imageMogr2/auto-orient/strip&quot; alt=&quot;热门搜索.gif&quot;&gt;&lt;/p&gt;
+&lt;p&gt;实例二，动态添加和删除&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/452998-946e282042cb5fd6.gif?imageMogr2/auto-orient/strip&quot; alt=&quot;动态添加和删除.gif&quot;&gt;&lt;/p&gt;
+&lt;p&gt;源码连接：&lt;a href=&quot;https://github.com/lexiaoyao20/FMTagsView&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Github&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&quot;1-特性&quot;&gt;&lt;a href=&quot;#1-特性&quot; class=&quot;headerlink&quot; title=&quot;1. 特性&quot;&gt;&lt;/a&gt;1. 特性&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;支持AutoLayout&lt;/li&gt;
+&lt;li&gt;支持自定义Tag的外观，如圆角，背景颜色，标签文字颜色…&lt;/li&gt;
+&lt;li&gt;支持动态添加和删除Tag&lt;/li&gt;
+&lt;li&gt;支持单选和多选模式&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;2-示例代码&quot;&gt;&lt;a href=&quot;#2-示例代码&quot; class=&quot;headerlink&quot; title=&quot;2. 示例代码&quot;&gt;&lt;/a&gt;2. 示例代码&lt;/h2&gt;&lt;p&gt;控件初始化示例：&lt;br&gt;&lt;figure class=&quot;highlight nix&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;12&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;13&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;14&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;15&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;16&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;17&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;18&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;19&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;20&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;21&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;FMTagsView *&lt;span class=&quot;attr&quot;&gt;tagsView&lt;/span&gt; = [[FMTagsView alloc] initWithFrame:CGRectMake(&lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;120&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;300&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;150&lt;/span&gt;)];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    tagsView.&lt;span class=&quot;attr&quot;&gt;contentInsets&lt;/span&gt; = UIEdgeInsetsZero;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    tagsView.&lt;span class=&quot;attr&quot;&gt;tagInsets&lt;/span&gt; = UIEdgeInsetsMake(&lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;15&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;, &lt;span class=&quot;number&quot;&gt;15&lt;/span&gt;);&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    tagsView.&lt;span class=&quot;attr&quot;&gt;tagBorderWidth&lt;/span&gt; = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    tagsView.&lt;span class=&quot;attr&quot;&gt;tagcornerRadius&lt;/span&gt; = &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    tagsView.&lt;span class=&quot;attr&quot;&gt;tagBorderColor&lt;/span&gt; = [UIColor lightGrayColor];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    tagsView.&lt;span class=&quot;attr&quot;&gt;tagSelectedBorderColor&lt;/span&gt; = [UIColor lightGrayColor];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    tagsView.&lt;span class=&quot;attr&quot;&gt;tagBackgroundColor&lt;/span&gt; = [UIColor whiteColor];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    tagsView.&lt;span class=&quot;attr&quot;&gt;lineSpacing&lt;/span&gt; = &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    tagsView.&lt;span class=&quot;attr&quot;&gt;interitemSpacing&lt;/span&gt; = &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    tagsView.&lt;span class=&quot;attr&quot;&gt;tagFont&lt;/span&gt; = [UIFont systemFontOfSize:&lt;span class=&quot;number&quot;&gt;14&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    tagsView.&lt;span class=&quot;attr&quot;&gt;tagTextColor&lt;/span&gt; = [UIColor grayColor];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    tagsView.&lt;span class=&quot;attr&quot;&gt;delegate&lt;/span&gt; = self;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [self.view addSubview:tagsView];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    NSArray *&lt;span class=&quot;attr&quot;&gt;dataArray&lt;/span&gt; = @[@&lt;span class=&quot;string&quot;&gt;&quot;麻棉连衣裙&quot;&lt;/span&gt;, @&lt;span class=&quot;string&quot;&gt;&quot;面条&quot;&lt;/span&gt;, @&lt;span class=&quot;string&quot;&gt;&quot;亲子装&quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                       @&lt;span class=&quot;string&quot;&gt;&quot;卫生巾&quot;&lt;/span&gt;, @&lt;span class=&quot;string&quot;&gt;&quot;米&quot;&lt;/span&gt;, @&lt;span class=&quot;string&quot;&gt;&quot;眉笔&quot;&lt;/span&gt;, @&lt;span class=&quot;string&quot;&gt;&quot;蛋糕&quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                       @&lt;span class=&quot;string&quot;&gt;&quot;面包&quot;&lt;/span&gt;, @&lt;span class=&quot;string&quot;&gt;&quot;洗洁精&quot;&lt;/span&gt;, @&lt;span class=&quot;string&quot;&gt;&quot;咖啡速溶&quot;&lt;/span&gt;,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;                       @&lt;span class=&quot;string&quot;&gt;&quot;云南白药牙膏&quot;&lt;/span&gt;, @&lt;span class=&quot;string&quot;&gt;&quot;方便面&quot;&lt;/span&gt;, @&lt;span class=&quot;string&quot;&gt;&quot;空调&quot;&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    //设置数据源&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    tagsView.&lt;span class=&quot;attr&quot;&gt;tagsArray&lt;/span&gt; = dataArray;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;实现代理方法：&lt;br&gt;&lt;figure class=&quot;highlight objectivec&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;//点击标签处理逻辑&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- (&lt;span class=&quot;keyword&quot;&gt;void&lt;/span&gt;)tagsView:(FMTagsView *)tagsView didSelectTagAtIndex:(&lt;span class=&quot;built_in&quot;&gt;NSUInteger&lt;/span&gt;)index &amp;#123;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;NSString&lt;/span&gt; *selectedKey = &lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.dataArray[index];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;UIViewController&lt;/span&gt; *controller = [[&lt;span class=&quot;built_in&quot;&gt;UIViewController&lt;/span&gt; alloc] init];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    controller.view.backgroundColor = [&lt;span class=&quot;built_in&quot;&gt;UIColor&lt;/span&gt; whiteColor];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    controller.title = selectedKey;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    [&lt;span class=&quot;keyword&quot;&gt;self&lt;/span&gt;.navigationController pushViewController:controller animated:&lt;span class=&quot;literal&quot;&gt;YES&lt;/span&gt;];&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;#125;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;首先，先上效果图。&lt;br&gt;示例一，仿天猫热门搜索标签的效果：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://upload-images.jianshu.io/upload_images/452998-92d0c01e7f97fe2b.gif?imageMogr2/auto
+    
+    </summary>
+    
+      <category term="iOS开发" scheme="http://bobdev.cn/categories/iOS%E5%BC%80%E5%8F%91/"/>
+    
+      <category term="我的开源项目" scheme="http://bobdev.cn/categories/iOS%E5%BC%80%E5%8F%91/%E6%88%91%E7%9A%84%E5%BC%80%E6%BA%90%E9%A1%B9%E7%9B%AE/"/>
+    
+    
+      <category term="UICollection" scheme="http://bobdev.cn/tags/UICollection/"/>
+    
+      <category term="Tag" scheme="http://bobdev.cn/tags/Tag/"/>
+    
+  </entry>
   
   <entry>
     <title>iOS - 如何实现弱引用字典</title>
