@@ -97,7 +97,8 @@
 支持动态添加和删除Tag
 支持单选和多选模式
 
-2. 示例代码控件初始化示例：123456789101112131415161718192021FMTagsView *tagsView = [[FM">
+2. 示例代码首先，添加 FMTagsView.h 和 FMTagsView.m 这两个文件到你项目中，或者使用pod来安装。
+1pod &apos;FMTag">
 <meta property="og:type" content="article">
 <meta property="og:title" content="开源一个基于UICollectionView的标签展示控件">
 <meta property="og:url" content="http://bobdev.cn/2016/05/29/开源一个基于UICollectionView的标签展示控件/index.html">
@@ -113,10 +114,11 @@
 支持动态添加和删除Tag
 支持单选和多选模式
 
-2. 示例代码控件初始化示例：123456789101112131415161718192021FMTagsView *tagsView = [[FM">
+2. 示例代码首先，添加 FMTagsView.h 和 FMTagsView.m 这两个文件到你项目中，或者使用pod来安装。
+1pod &apos;FMTag">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/452998-92d0c01e7f97fe2b.gif?imageMogr2/auto-orient/strip">
 <meta property="og:image" content="http://upload-images.jianshu.io/upload_images/452998-946e282042cb5fd6.gif?imageMogr2/auto-orient/strip">
-<meta property="og:updated_time" content="2016-05-29T09:06:20.000Z">
+<meta property="og:updated_time" content="2016-05-30T22:57:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="开源一个基于UICollectionView的标签展示控件">
 <meta name="twitter:description" content="首先，先上效果图。示例一，仿天猫热门搜索标签的效果：
@@ -130,7 +132,8 @@
 支持动态添加和删除Tag
 支持单选和多选模式
 
-2. 示例代码控件初始化示例：123456789101112131415161718192021FMTagsView *tagsView = [[FM">
+2. 示例代码首先，添加 FMTagsView.h 和 FMTagsView.m 这两个文件到你项目中，或者使用pod来安装。
+1pod &apos;FMTag">
 <meta name="twitter:image" content="http://upload-images.jianshu.io/upload_images/452998-92d0c01e7f97fe2b.gif?imageMogr2/auto-orient/strip">
 
 
@@ -410,7 +413,9 @@
 <li>支持动态添加和删除Tag</li>
 <li>支持单选和多选模式</li>
 </ul>
-<h2 id="2-示例代码"><a href="#2-示例代码" class="headerlink" title="2. 示例代码"></a>2. 示例代码</h2><p>控件初始化示例：<br><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">FMTagsView *<span class="attr">tagsView</span> = [[FMTagsView alloc] initWithFrame:CGRectMake(<span class="number">10</span>, <span class="number">120</span>, <span class="number">300</span>, <span class="number">150</span>)];</span><br><span class="line">    tagsView.<span class="attr">contentInsets</span> = UIEdgeInsetsZero;</span><br><span class="line">    tagsView.<span class="attr">tagInsets</span> = UIEdgeInsetsMake(<span class="number">5</span>, <span class="number">15</span>, <span class="number">5</span>, <span class="number">15</span>);</span><br><span class="line">    tagsView.<span class="attr">tagBorderWidth</span> = <span class="number">1</span>;</span><br><span class="line">    tagsView.<span class="attr">tagcornerRadius</span> = <span class="number">2</span>;</span><br><span class="line">    tagsView.<span class="attr">tagBorderColor</span> = [UIColor lightGrayColor];</span><br><span class="line">    tagsView.<span class="attr">tagSelectedBorderColor</span> = [UIColor lightGrayColor];</span><br><span class="line">    tagsView.<span class="attr">tagBackgroundColor</span> = [UIColor whiteColor];</span><br><span class="line">    tagsView.<span class="attr">lineSpacing</span> = <span class="number">10</span>;</span><br><span class="line">    tagsView.<span class="attr">interitemSpacing</span> = <span class="number">10</span>;</span><br><span class="line">    tagsView.<span class="attr">tagFont</span> = [UIFont systemFontOfSize:<span class="number">14</span>];</span><br><span class="line">    tagsView.<span class="attr">tagTextColor</span> = [UIColor grayColor];</span><br><span class="line">    tagsView.<span class="attr">delegate</span> = self;</span><br><span class="line">    [self.view addSubview:tagsView];</span><br><span class="line">    </span><br><span class="line">    NSArray *<span class="attr">dataArray</span> = @[@<span class="string">"麻棉连衣裙"</span>, @<span class="string">"面条"</span>, @<span class="string">"亲子装"</span>,</span><br><span class="line">                       @<span class="string">"卫生巾"</span>, @<span class="string">"米"</span>, @<span class="string">"眉笔"</span>, @<span class="string">"蛋糕"</span>,</span><br><span class="line">                       @<span class="string">"面包"</span>, @<span class="string">"洗洁精"</span>, @<span class="string">"咖啡速溶"</span>,</span><br><span class="line">                       @<span class="string">"云南白药牙膏"</span>, @<span class="string">"方便面"</span>, @<span class="string">"空调"</span>];</span><br><span class="line">    //设置数据源</span><br><span class="line">    tagsView.<span class="attr">tagsArray</span> = dataArray;</span><br></pre></td></tr></table></figure></p>
+<h2 id="2-示例代码"><a href="#2-示例代码" class="headerlink" title="2. 示例代码"></a>2. 示例代码</h2><p>首先，添加 FMTagsView.h 和 FMTagsView.m 这两个文件到你项目中，或者使用pod来安装。</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">pod</span> <span class="string">'FMTagsView'</span></span><br></pre></td></tr></table></figure>
+<p>控件初始化示例：<br><figure class="highlight nix"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">FMTagsView *<span class="attr">tagsView</span> = [[FMTagsView alloc] initWithFrame:CGRectMake(<span class="number">10</span>, <span class="number">120</span>, <span class="number">300</span>, <span class="number">150</span>)];</span><br><span class="line">    tagsView.<span class="attr">contentInsets</span> = UIEdgeInsetsZero;</span><br><span class="line">    tagsView.<span class="attr">tagInsets</span> = UIEdgeInsetsMake(<span class="number">5</span>, <span class="number">15</span>, <span class="number">5</span>, <span class="number">15</span>);</span><br><span class="line">    tagsView.<span class="attr">tagBorderWidth</span> = <span class="number">1</span>;</span><br><span class="line">    tagsView.<span class="attr">tagcornerRadius</span> = <span class="number">2</span>;</span><br><span class="line">    tagsView.<span class="attr">tagBorderColor</span> = [UIColor lightGrayColor];</span><br><span class="line">    tagsView.<span class="attr">tagSelectedBorderColor</span> = [UIColor lightGrayColor];</span><br><span class="line">    tagsView.<span class="attr">tagBackgroundColor</span> = [UIColor whiteColor];</span><br><span class="line">    tagsView.<span class="attr">lineSpacing</span> = <span class="number">10</span>;</span><br><span class="line">    tagsView.<span class="attr">interitemSpacing</span> = <span class="number">10</span>;</span><br><span class="line">    tagsView.<span class="attr">tagFont</span> = [UIFont systemFontOfSize:<span class="number">14</span>];</span><br><span class="line">    tagsView.<span class="attr">tagTextColor</span> = [UIColor grayColor];</span><br><span class="line">    tagsView.<span class="attr">delegate</span> = self;</span><br><span class="line">    [self.view addSubview:tagsView];</span><br><span class="line">    </span><br><span class="line">    NSArray *<span class="attr">dataArray</span> = @[@<span class="string">"麻棉连衣裙"</span>, @<span class="string">"面条"</span>, @<span class="string">"亲子装"</span>,</span><br><span class="line">                       @<span class="string">"卫生巾"</span>, @<span class="string">"米"</span>, @<span class="string">"眉笔"</span>, @<span class="string">"蛋糕"</span>,</span><br><span class="line">                       @<span class="string">"面包"</span>, @<span class="string">"洗洁精"</span>, @<span class="string">"咖啡速溶"</span>,</span><br><span class="line">                       @<span class="string">"云南白药牙膏"</span>, @<span class="string">"方便面"</span>, @<span class="string">"空调"</span>];</span><br><span class="line">    //设置数据源</span><br><span class="line">    tagsView.<span class="attr">tagsArray</span> = dataArray;</span><br></pre></td></tr></table></figure></p>
 <p>实现代理方法：<br><figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//点击标签处理逻辑</span></span><br><span class="line">- (<span class="keyword">void</span>)tagsView:(FMTagsView *)tagsView didSelectTagAtIndex:(<span class="built_in">NSUInteger</span>)index &#123;</span><br><span class="line">    <span class="built_in">NSString</span> *selectedKey = <span class="keyword">self</span>.dataArray[index];</span><br><span class="line">    <span class="built_in">UIViewController</span> *controller = [[<span class="built_in">UIViewController</span> alloc] init];</span><br><span class="line">    controller.view.backgroundColor = [<span class="built_in">UIColor</span> whiteColor];</span><br><span class="line">    controller.title = selectedKey;</span><br><span class="line">    [<span class="keyword">self</span>.navigationController pushViewController:controller animated:<span class="literal">YES</span>];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 
       
@@ -451,6 +456,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/07/02/禅与-Objective-C-编程艺术学习笔记-一-类簇/" rel="prev" title="禅与 Objective-C 编程艺术学习笔记<一> -- 类簇">
+                禅与 Objective-C 编程艺术学习笔记<一> -- 类簇 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -525,7 +534,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">5</span>
+              <span class="site-state-item-count">6</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -533,7 +542,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -542,7 +551,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
